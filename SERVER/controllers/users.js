@@ -1,35 +1,35 @@
 import {v4 as uuid} from 'uuid';
 
-let users = [];
+let contacts = [];
 
-export const getUsers = (req, res) => {
-    res.send(users);
+export const getContacts = (req, res) => {
+    res.send(contacts);
 };
 
-export const createUser = (req, res) => {
-    const user = req.body;
+export const createContact = (req, res) => {
+    const contact = req.body;
 
-    users.push({...user, id: uuid()});
-    res.send('User Added successfully')
+    contacts.push({...contact, id: uuid()});
+    res.send('Contact Added successfully')
 };
 
-export const getUser = (req, res) => {
-    const singleUser = users.filter((user) => user.id === req.params.id);
+export const getContact = (req, res) => {
+    const singleContact = contacts.filter((contact) => contact.id === req.params.id);
     res.send(singleUser);
 };
 
-export const deleteUser = (req, res) => {
-    users = users.filter((user) => user.id !== req.params.id);
-    res.send('User Deleted successfully');
+export const deleteContact = (req, res) => {
+    contacts = contacts.filter((contact) => contact.id !== req.params.id);
+    res.send('Contact Deleted successfully');
 };
 
-export const updateUser = (req, res) =>  {
-    const user = users.find((user) => user.id === req.params.id);
+export const updateContact = (req, res) =>  {
+    const contact = contacts.find((contact) => contact.id === req.params.id);
 
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.contact = req.body.contact;
+    contact.name = req.body.name;
+    contact.email = req.body.email;
+    contact.contact = req.body.contact;
 
-    res.send('User Updated successfully');
+    res.send('Contact Updated successfully');
 
 };
